@@ -1,34 +1,105 @@
-.loader {
-
-border-radius: 50%;
-width: 50px;
-height: 50px;
-border: 10px solid rgba(211, 211, 211, 0);
-border-top: 10px solid grey;
-animation: spin 2s linear infinite;
-
-}
-
-.hide-loader {
-
-display: none;
-
-}
-
-@keyframes spin{
-
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-
-}
-
-.character-list li {
-
-    list-style: none;
-    cursor: pointer;
-}
-
-ul {
-
-    list-style: none;
-}
+body {
+    background: #e5e5e5;
+  }
+  
+  * {
+    margin: 0%;
+    padding: 0%;
+  }
+  
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 1440px;
+    margin: auto;
+  }
+  
+  header {
+    background: url(/assets/sw-header.jpg) center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-size: cover;
+    width: 1440px;
+    height: 353px;
+  }
+  
+  .swtext {
+    text-align: justify;
+    width: 380px;
+    height: 143px;
+    left: 67px;
+    top: 105px;
+    font-family: Ropa Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 64px;
+    line-height: 69px;
+    letter-spacing: 0.15em;
+    margin-left: 30px;
+    border: solid;
+    color: #ffd600;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    width: 1440px;
+    height: 677px;
+    background: #424242;
+  }
+  
+  h2 {
+    display: flex;
+    height: 60px;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 6px;
+    justify-content: center;
+    align-items: center;
+    background: rgba(83, 85, 86, 1);
+  }
+  
+  .right h2 {
+    background-color: rgba(116, 134, 135, 1);
+  }
+  
+  h2 {
+    font-family: Ropa Sans;
+    color: rgba(255, 214, 0, 1);
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+  }
+  
+  .charinfo, .planetinfo {
+    height: 220px;
+  }
+  
+  .charinfo {
+    background-color: rgba(196, 196, 196, 1);
+    color: black;
+  }
+  
+  .planetinfo {
+    background-color: rgba(142, 142, 142, 1);
+    color: white;
+  }
+  
+  .boxwrapper {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap-reverse;
+    margin-bottom: 50px;
+  }
+  
+  .left,
+  .right {
+    margin: 50px;
+    width: 484px;
+    height: 624px;
+    background-color: lightgray;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+  }
+  
