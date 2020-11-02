@@ -28,15 +28,10 @@ async function listCharacters() {
 
 
 function renderCharacterList(character) {
-
-    const characterDiv = document.querySelector(".character")
-    const characterUL = document.createElement("ul")
-    //const characterList = document.querySelector(".character ul")     //fixa li i ul
+    
+    const characterList = document.querySelector(".character")
     const characterSlot = document.createElement("li")
-
-    characterDiv.append(characterUL)
-    characterUL.append(characterSlot)
-
+    characterList.append(characterSlot)
 
     characterSlot.innerHTML = character.name
 
