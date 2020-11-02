@@ -177,3 +177,16 @@ function showDetails() {
 
 }
 
+// ----------------- test ------------------------- 
+
+// let detailsLists = document.querySelector('.planetinfo'),
+//     //detailsLists = document.querySelectorAll('li')
+
+// detailsLists.forEach(function(item){
+//     item.addEventListener('click', function(){
+//         tabLink.forEach(function(detailsLists) {
+//           detailsLists.classList.add('showplanetinfo')
+//         })
+//         item.classList.add('')
+//     }, false)
+// })
