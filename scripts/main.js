@@ -1,20 +1,21 @@
 
-getData()
+getCharacterData()
 listCharacters()
 
-async function getData() {
+async function getCharacterData() {
 
     const charactersRequest = await fetch("https://swapi.dev/api/people/")
-    const data = await charactersRequest.json()
+    const characterData = await charactersRequest.json()
 
-    return data.results
+    return characterData.results
 }
+
 
 async function listCharacters() {
 
     displayLoader()
 
-    const characters = await getData()
+    const characters = await getCharacterData()
 
     hideLoader()
 
@@ -28,7 +29,7 @@ async function listCharacters() {
 
 
 function renderCharacterList(character) {
-    
+
     const characterList = document.querySelector(".character")
     const characterSlot = document.createElement("li")
     characterList.append(characterSlot)
@@ -38,17 +39,17 @@ function renderCharacterList(character) {
     characterSlot.addEventListener("click", function (event) {
 
         const targetedCharacter = event.target.innerText
-        listDetails(targetedCharacter)
+        listCharacterDetails(targetedCharacter)
 
     })
 
 }
 
 
-async function listDetails(character) {
+async function listCharacterDetails(character) {
 
     let char = []
-    const list = await getData()
+    const list = await getCharacterData()
 
 
     for (const currentCharacter of list) {
@@ -58,11 +59,14 @@ async function listDetails(character) {
             char = currentCharacter
         }
 
-    } renderDetails(char)
+    }
+
+    renderCharacterDetails(char)
+    listPlanetDetails(char)
 }
 
 
-function renderDetails(character) {
+function renderCharacterDetails(character) {
 
     const characterDetails = document.querySelector(".charinfo")
     const characterName = document.querySelector(".charactername")
@@ -99,17 +103,57 @@ function renderDetails(character) {
 
 }
 
+async function listPlanetDetails(character) {
+
+    const planetInfo = await fetch(character.homeworld)
+    const planetData = await planetInfo.json()
+
+    renderPlanetDetails(planetData)
+}
+
+function renderPlanetDetails(planet) {
+
+    const planetDetails = document.querySelector(".planetinfo")
+    const planetName = document.querySelector(".planetname")
+
+    planetName.innerHTML = planet.name
+
+    const planetRotation = document.createElement("li")
+    planetDetails.append(planetRotation)
+    planetRotation.innerHTML = "Rotation period: " + planet.rotation_period
+
+    const planetOrbital = document.createElement("li")
+    planetDetails.append(planetOrbital)
+    planetOrbital.innerHTML = "Orbital period: " + planet.orbital_period
+
+    const planetDiameter = document.createElement("li")
+    planetDetails.append(planetDiameter)
+    planetDiameter.innerHTML = "Diameter: " + planet.diameter
+
+    const planetClimate = document.createElement("li")
+    planetDetails.append(planetClimate)
+    planetClimate.innerHTML = "Diameter: " + planet.climate
+
+    const planetGravity = document.createElement("li")
+    planetDetails.append(planetGravity)
+    planetGravity.innerHTML = "Gravity: " + planet.gravity
+
+    const planetTerrain = document.createElement("li")
+    planetDetails.append(planetTerrain)
+    planetTerrain.innerHTML = "Terrain: " + planet.terrain
+
+}
+
 
 function displayLoader() {
 
-    const bodyElement = document.querySelector(".character")
+    const bodyElement = document.querySelector(".left")
     const divElement = document.createElement("div")
     const loader = divElement
     loader.classList.add("loader")
     bodyElement.append(loader)
 
 }
-
 
 function hideLoader() {
 
