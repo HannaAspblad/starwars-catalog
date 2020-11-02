@@ -29,9 +29,14 @@ async function listCharacters() {
 
 function renderCharacterList(character) {
 
-    const characterList = document.querySelector(".character-list")
+    const characterDiv = document.querySelector(".character")
+    const characterUL = document.createElement("ul")
+    //const characterList = document.querySelector(".character ul")     //fixa li i ul
     const characterSlot = document.createElement("li")
-    characterList.append(characterSlot)
+
+    characterDiv.append(characterUL)
+    characterUL.append(characterSlot)
+
 
     characterSlot.innerHTML = character.name
 
@@ -48,7 +53,6 @@ function renderCharacterList(character) {
 async function listDetails(character) {
 
     let char = []
-
     const list = await getData()
 
 
@@ -65,10 +69,8 @@ async function listDetails(character) {
 
 function renderDetails(character) {
 
-    console.log(character)
-
-    const characterDetails = document.querySelector(".character-details")
-    const characterName = document.querySelector(".character-name")
+    const characterDetails = document.querySelector(".charinfo")
+    const characterName = document.querySelector(".charactername")
 
     characterName.innerHTML = character.name
 
@@ -105,7 +107,7 @@ function renderDetails(character) {
 
 function displayLoader() {
 
-    const bodyElement = document.querySelector("body")
+    const bodyElement = document.querySelector(".character")
     const divElement = document.createElement("div")
     const loader = divElement
     loader.classList.add("loader")
@@ -123,5 +125,16 @@ function hideLoader() {
 
 
 
+function clearDetails() {
 
+    const detailsLists = document.querySelector(".characterinfo .planetinfo")
+    detailsLists.classList.add("clearinfo")
+
+}
+
+function showDetails() {
+    const detailsLists = document.querySelector(".characterinfo .planetinfo")
+    detailsLists.classList.add("clearinfo")
+
+}
 

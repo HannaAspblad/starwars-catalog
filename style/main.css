@@ -1,5 +1,6 @@
 body {
     background: #e5e5e5;
+    min-width: 1200px;
   }
   
   * {
@@ -16,12 +17,11 @@ body {
   }
   
   header {
-    background: url(/assets/sw-header.jpg) center center;
+    background: url("../assets/sw-header.jpg") center center;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     background-size: cover;
-    width: 1440px;
     height: 353px;
   }
   
@@ -38,14 +38,12 @@ body {
     line-height: 69px;
     letter-spacing: 0.15em;
     margin-left: 30px;
-    border: solid;
     color: #ffd600;
   }
   
   main {
     display: flex;
     justify-content: center;
-    width: 1440px;
     height: 677px;
     background: #424242;
   }
@@ -72,18 +70,36 @@ body {
     border-top-left-radius: 15px;
   }
   
-  .charinfo, .planetinfo {
+  .character li,
+  .charinfo li,
+  .planetinfo {
+    list-style: none;
+  }
+
+  .character li {
+    cursor: pointer;
+  }
+
+  
+  .charinfo,
+  .planetinfo {
     height: 220px;
   }
   
   .charinfo {
     background-color: rgba(196, 196, 196, 1);
     color: black;
+    display: block;
   }
   
   .planetinfo {
     background-color: rgba(142, 142, 142, 1);
     color: white;
+    display: block;
+  }
+
+  .clearinfo {
+    display: none;
   }
   
   .boxwrapper {
