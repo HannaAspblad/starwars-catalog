@@ -1,18 +1,19 @@
 body {
     background: #e5e5e5;
-    min-width: 1200px;
+    font-family: Ropa Sans;
   }
   
   * {
     margin: 0%;
     padding: 0%;
   }
-  
+
   .wrapper {
     display: flex;
     justify-content: center;
     flex-direction: column;
     max-width: 1440px;
+    min-width: 1200px;
     margin: auto;
   }
   
@@ -31,7 +32,6 @@ body {
     height: 143px;
     left: 67px;
     top: 105px;
-    font-family: Ropa Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 64px;
@@ -64,60 +64,65 @@ body {
   }
   
   h2 {
-    font-family: Ropa Sans;
     color: rgba(255, 214, 0, 1);
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
   }
-  
+
+  .right h3 {
+    padding: 20px 0px 0px 20px;
+    font-weight: lighter;
+  }
+
   .character li,
   .charinfo li,
-  .planetinfo {
+  .planetinfo li {
     list-style: none;
-    font-family: Ropa Sans;
-    font-weight: 50;
-    line-height: 1;
+    font-weight: lighter;
+  }
+
+  .planetinfo li,
+  .charinfo li{
+    font-size: 12px;
+    letter-spacing: 2px;
+    line-height: 15px;
+    padding-left: 20px;
+  }
+
+  .character li:nth-child(odd){
+    background-color: rgba(142, 142, 142, 1);
+    color: white;
   }
 
   .character li:hover,
   .character li:nth-child(odd):hover {
-
   background-color: #424242;
+  color: white;
   }
-
-
+ 
   .character li {
     cursor: pointer;
     padding: 8px;
   }
 
-  
-  .charinfo,
-  .planetinfo {
-    height: 220px;
+  .charactername{
+    background-color: lightgray;
   }
-  
-
-  
-.character li:nth-child(odd){
-  background-color: rgba(142, 142, 142, 1);
-  color: white;
-}​
 
   .charinfo {
-    background-color: rgba(196, 196, 196, 1);
+    background-color: lightgrey;
     color: black;
-    display: block;
+    height:230px;
+  }
+
+  .planetname {
+    background-color: rgba(142, 142, 142, 1);
+    color: white;
   }
   
   .planetinfo {
     background-color: rgba(142, 142, 142, 1);
     color: white;
-    display: block;
-  }
-
-  .clearinfo {
-    display: none;
   }
   
   .boxwrapper {
@@ -136,19 +141,33 @@ body {
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
   }
+
+  .right {
+    background-color:rgb(142, 142, 142, 1);
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pagination img {
+    cursor: pointer;
+  }
   
   .loader {
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    border: 10px solid rgba(211, 211, 211, 0);
-    border-top: 10px solid grey;
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(211, 211, 211, 0);
+    border-top: 3px solid rgb(142, 142, 142);
     animation: spin 2s linear infinite;
+    margin: auto;
   }
-    
-
     
   @keyframes spin{
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
+
+ 
