@@ -79,10 +79,11 @@ body {
     line-height: 1;
   }
 
-.character li:hover {
+  .character li:hover,
+  .character li:nth-child(odd):hover {
 
   background-color: #424242;
-}
+  }
 
 
   .character li {

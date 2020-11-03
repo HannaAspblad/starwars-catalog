@@ -13,8 +13,9 @@ async function getCharacterData() {
 
 async function listCharacters() {
 
+    const loaderPosition = document.querySelector(".left")
     
-displayLoader()
+displayLoader(loaderPosition)
 
     const characters = await getCharacterData()
     hideLoader()
@@ -48,7 +49,9 @@ function renderCharacterList(character) {
 
 async function listCharacterDetails(character) {
 
-    displayLoader()
+    const loaderPosition = document.querySelector(".charinfo")
+
+    displayLoader(loaderPosition)
 
     let char = []
     const list = await getCharacterData()
@@ -108,10 +111,14 @@ function renderCharacterDetails(character) {
 
 async function listPlanetDetails(character) {
 
-    
+    const loaderPosition = document.querySelector(".planetinfo")
+
+    displayLoader(loaderPosition)
 
     const planetInfo = await fetch(character.homeworld)
     const planetData = await planetInfo.json()
+
+    hideLoader()
 
     renderPlanetDetails(planetData)
 }
@@ -160,13 +167,12 @@ function renderPlanetDetails(planet) {
 
 
 
-function displayLoader(){
+function displayLoader(position){
 
-    const bodyElement = document.querySelector(".right")
     const divElement = document.createElement("div")
     const loader = divElement
     loader.classList.add("loader")
-    bodyElement.append(loader)
+    position.append(loader)
     
     
     }
