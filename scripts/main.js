@@ -1,6 +1,6 @@
 
 getCharacterData()
-listCharacters()
+
 
 async function getCharacterData() {
 
@@ -13,12 +13,11 @@ async function getCharacterData() {
 
 async function listCharacters() {
 
-    displayLoader()
+    
+displayLoader()
 
     const characters = await getCharacterData()
-
     hideLoader()
-
 
     for (const currentCharacter of characters) {
 
@@ -27,6 +26,7 @@ async function listCharacters() {
     }
 }
 
+listCharacters()
 
 function renderCharacterList(character) {
 
@@ -48,9 +48,12 @@ function renderCharacterList(character) {
 
 async function listCharacterDetails(character) {
 
+    displayLoader()
+
     let char = []
     const list = await getCharacterData()
 
+    hideLoader()
 
     for (const currentCharacter of list) {
 
@@ -105,6 +108,8 @@ function renderCharacterDetails(character) {
 
 async function listPlanetDetails(character) {
 
+    
+
     const planetInfo = await fetch(character.homeworld)
     const planetData = await planetInfo.json()
 
@@ -145,20 +150,32 @@ function renderPlanetDetails(planet) {
 }
 
 
-function displayLoader() {
 
-    const bodyElement = document.querySelector(".left")
+
+
+
+
+
+
+
+
+
+function displayLoader(){
+
+    const bodyElement = document.querySelector(".right")
     const divElement = document.createElement("div")
     const loader = divElement
     loader.classList.add("loader")
     bodyElement.append(loader)
-
-}
+    
+    
+    }
 
 function hideLoader() {
 
+
     const loader = document.querySelector(".loader")
-    loader.classList.add("hide-loader")
+    loader.remove()
 
 }
 

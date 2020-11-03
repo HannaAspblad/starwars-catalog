@@ -74,10 +74,20 @@ body {
   .charinfo li,
   .planetinfo {
     list-style: none;
+    font-family: Ropa Sans;
+    font-weight: 50;
+    line-height: 1;
   }
+
+.character li:hover {
+
+  background-color: #424242;
+}
+
 
   .character li {
     cursor: pointer;
+    padding: 8px;
   }
 
   
@@ -86,6 +96,13 @@ body {
     height: 220px;
   }
   
+
+  
+.character li:nth-child(odd){
+  background-color: rgba(142, 142, 142, 1);
+  color: white;
+}​
+
   .charinfo {
     background-color: rgba(196, 196, 196, 1);
     color: black;
@@ -112,7 +129,7 @@ body {
   .left,
   .right {
     margin: 50px;
-    width: 484px;
+    width: 350px;
     height: 624px;
     background-color: lightgray;
     border-top-right-radius: 15px;
@@ -128,9 +145,7 @@ body {
     animation: spin 2s linear infinite;
   }
     
-  .hide-loader {
-    display: none;
-  }
+
     
   @keyframes spin{
     from { transform: rotate(0deg); }
