@@ -1,33 +1,25 @@
-
-getCharacterData()
-
+getCharacterData();
 
 async function getCharacterData() {
+  const charactersRequest = await fetch("https://swapi.dev/api/people/");
+  const characterData = await charactersRequest.json();
 
-    const charactersRequest = await fetch("https://swapi.dev/api/people/")
-    const characterData = await charactersRequest.json()
-
-    return characterData.results
+  return characterData.results;
 }
-
 
 async function listCharacters() {
+  const loaderPosition = document.querySelector(".character");
 
-    const loaderPosition = document.querySelector(".character")
-    
-displayLoader(loaderPosition)
+  displayLoader(loaderPosition);
 
-    const characters = await getCharacterData()
-    hideLoader()
+  const characters = await getCharacterData();
+  hideLoader();
 
   
-
     for (const currentCharacter of characters) {
-
-  for (const currentCharacter of characters) {
-    renderCharacterList(currentCharacter);
-  }
-}
+      renderCharacterList(currentCharacter);
+    }
+  
 }
 listCharacters();
 
@@ -66,7 +58,6 @@ async function listCharacterDetails(character) {
 }
 
 function renderCharacterDetails(character) {
-  
   const characterDetails = document.querySelector(".charinfo");
   const characterName = document.querySelector(".charactername");
 
@@ -102,7 +93,6 @@ function renderCharacterDetails(character) {
 }
 
 async function listPlanetDetails(character) {
-  
   let clear = document.getElementsByClassName("planetinfo")[0];
   clear.innerHTML = "";
   const loaderPosition = document.querySelector(".planetinfo");
@@ -118,7 +108,6 @@ async function listPlanetDetails(character) {
 }
 
 function renderPlanetDetails(planet) {
-  
   const planetDetails = document.querySelector(".planetinfo");
   const planetName = document.querySelector(".planetname");
 
@@ -161,23 +150,14 @@ function hideLoader() {
   loader.remove();
 }
 
-pagination()
+pagination();
 
-function pagination(){
-
-    const currentPage = document.querySelector(".currentpage")
-    currentPage.innerHTML = "sidnummer"
+function pagination() {
+  const currentPage = document.querySelector(".currentpage");
+  currentPage.innerHTML = "sidnummer";
 }
 
-
-
-
-
 // --------------clear detailstest -----------------
-
-
-
-
 
 // function clearDetails() {
 
@@ -192,12 +172,7 @@ function pagination(){
 
 // }
 
-
-
-
-
-
-// ----------------- test ------------------------- 
+// ----------------- test -------------------------
 
 // let detailsLists = document.querySelector('.planetinfo'),
 //     //detailsLists = document.querySelectorAll('li')
@@ -210,4 +185,3 @@ function pagination(){
 //         item.classList.add('')
 //     }, false)
 // })
-
