@@ -1,13 +1,19 @@
+let currentPage = 1
+
 getCharacterData();
 
 async function getCharacterData() {
-  const charactersRequest = await fetch("https://swapi.dev/api/people/");
-  const characterData = await charactersRequest.json();
 
+  const pageRequest = ("https://swapi.dev/api/people/?page=" + currentPage)
+  const charactersRequest = await fetch(pageRequest)
+  const characterData = await charactersRequest.json();
+  
   return characterData.results;
+
 }
 
 async function listCharacters() {
+
   const loaderPosition = document.querySelector(".character");
 
   displayLoader(loaderPosition);
@@ -15,13 +21,15 @@ async function listCharacters() {
   const characters = await getCharacterData();
   hideLoader();
 
-  
-    for (const currentCharacter of characters) {
-      renderCharacterList(currentCharacter);
-    }
-  
+  for (const currentCharacter of characters) {
+    renderCharacterList(currentCharacter);
+  }
+
 }
+
 listCharacters();
+
+
 
 function renderCharacterList(character) {
   const characterList = document.querySelector(".character");
@@ -54,7 +62,9 @@ async function listCharacterDetails(character) {
   }
 
   renderCharacterDetails(char);
+
   listPlanetDetails(char);
+
 }
 
 function renderCharacterDetails(character) {
@@ -150,9 +160,42 @@ function hideLoader() {
   loader.remove();
 }
 
-pagination();
+changePage();
 
-function pagination() {
-  const currentPage = document.querySelector(".currentpage");
-  currentPage.innerHTML = "sidnummer";
+function changePage() {
+  const pageNumber = document.querySelector(".pagenumber");
+  const nextPage = document.querySelector(".nextpage")
+  const previousPage = document.querySelector(".previouspage")
+  pageNumber.innerHTML = currentPage;
+
+  nextPage.addEventListener("click", function (e) {
+
+    const clear = document.querySelector(".character")
+    clear.innerHTML = "";
+
+    getCharacterData(currentPage += 1)
+    listCharacters()
+    
+  })
+
+  previousPage.addEventListener("click", function (e) {
+
+    const clear = document.querySelector(".character")
+    clear.innerHTML = "";
+
+    getCharacterData(currentPage -= 1)
+    listCharacters()
+
+  })
+
 }
+
+
+// ------------ wip-funktion som rensar listor --------
+
+// function clearList(list){
+
+//   const currentElement = document.querySelector(list)
+//   currentElement.innerHTML = ""
+
+// }
