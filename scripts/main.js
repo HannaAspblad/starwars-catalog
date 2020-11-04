@@ -42,7 +42,7 @@ function renderCharacterList(character) {
 
 async function listCharacterDetails(character) {
   const loaderPosition = document.querySelector(".charinfo");
-  clearchar();
+  powerFuncs.clearchar()
   displayLoader(loaderPosition);
   let char = [];
   const list = await getCharacterData();
@@ -95,7 +95,7 @@ function renderCharacterDetails(character) {
 }
 
 async function listPlanetDetails(character) {
-  clearplanet();
+  powerFuncs.clearplanet()
   const loaderPosition = document.querySelector(".planetinfo");
   displayLoader(loaderPosition);
   const planetInfo = await fetch(character.homeworld);
@@ -157,8 +157,7 @@ function selectPage() {
 
   nextPage.addEventListener("click", function (e) {
 
-    const clear = document.querySelector(".character"); //byta till clear-funktion
-    clear.innerHTML = "";                               //byta till clear-funktion
+    powerFuncs.nextPrevious()                               
 
     currentPage += 1
     pageNumber.innerHTML = currentPage + lastPage;
@@ -176,8 +175,7 @@ function selectPage() {
 
   previousPage.addEventListener("click", function (e) {
 
-    const clear = document.querySelector(".character"); //byta till clear-funktion
-    clear.innerHTML = "";                               //byta till clear-funktion
+    powerFuncs.nextPrevious()                             
 
     currentPage -= 1
     pageNumber.innerHTML = currentPage + lastPage;
@@ -210,14 +208,23 @@ function selectPage() {
 
 // }
 
-function clearchar(charsnew) {
-  var charsnew = document.getElementsByClassName("charinfo")[0];
+
+
+
+var powerFuncs = {
+  clearchar: function(charsnew) {
+    var charsnew = document.getElementsByClassName("charinfo")[0];
   charsnew.innerHTML = "";
-}
+  },
 
-function clearplanet(planetsnew) {
-  var planetsnew = document.getElementsByClassName("planetinfo")[0];
+  clearplanet: function(planetsnew) {
+    var planetsnew = document.getElementsByClassName("planetinfo")[0];
   planetsnew.innerHTML = "";
-}
+  },
 
+  nextPrevious: function(clear) {
+    var clear = document.querySelector(".character"); 
+    clear.innerHTML = "";   
+  }
+}
 
