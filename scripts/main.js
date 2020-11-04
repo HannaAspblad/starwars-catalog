@@ -156,32 +156,3 @@ function pagination() {
   const currentPage = document.querySelector(".currentpage");
   currentPage.innerHTML = "sidnummer";
 }
-
-// --------------clear detailstest -----------------
-
-// function clearDetails() {
-
-//     const detailsLists = document.querySelector(".characterinfo .planetinfo")
-//     detailsLists.classList.add("clearinfo")
-
-// }
-
-// function showDetails() {
-//     const detailsLists = document.querySelector(".characterinfo .planetinfo")
-//     detailsLists.classList.add("clearinfo")
-
-// }
-
-// ----------------- test -------------------------
-
-// let detailsLists = document.querySelector('.planetinfo'),
-//     //detailsLists = document.querySelectorAll('li')
-
-// detailsLists.forEach(function(item){
-//     item.addEventListener('click', function(){
-//         tabLink.forEach(function(detailsLists) {
-//           detailsLists.classList.add('showplanetinfo')
-//         })
-//         item.classList.add('')
-//     }, false)
-// })
