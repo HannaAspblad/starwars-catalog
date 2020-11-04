@@ -166,13 +166,12 @@ function changePage() {
   const pageNumber = document.querySelector(".pagenumber");
   const nextPage = document.querySelector(".nextpage")
   const previousPage = document.querySelector(".previouspage")
-  pageNumber.innerHTML = currentPage;
 
   nextPage.addEventListener("click", function (e) {
 
     const clear = document.querySelector(".character")
     clear.innerHTML = "";
-
+    pageNumber.innerHTML = currentPage;
     getCharacterData(currentPage += 1)
     listCharacters()
     
@@ -182,9 +181,9 @@ function changePage() {
 
     const clear = document.querySelector(".character")
     clear.innerHTML = "";
-
     getCharacterData(currentPage -= 1)
     listCharacters()
+    
 
   })
 
