@@ -1,8 +1,13 @@
-let currentPage = 1;
+let currentPage = 1; //hela pagineringen mkt meckigare än nödvändigt
 
 getCharacterData();
 
+listCharacters();
+
+selectPage();
+
 async function getCharacterData() {
+
   const pageRequest = "https://swapi.dev/api/people/?page=" + currentPage;
   const charactersRequest = await fetch(pageRequest);
   const characterData = await charactersRequest.json();
@@ -12,9 +17,7 @@ async function getCharacterData() {
 
 async function listCharacters() {
   const loaderPosition = document.querySelector(".character");
-
   displayLoader(loaderPosition);
-
   const characters = await getCharacterData();
   hideLoader();
 
@@ -23,29 +26,26 @@ async function listCharacters() {
   }
 }
 
-listCharacters();
-
 function renderCharacterList(character) {
   const characterList = document.querySelector(".character");
   const characterSlot = document.createElement("li");
   characterList.append(characterSlot);
-
   characterSlot.innerHTML = character.name;
 
   characterSlot.addEventListener("click", function (event) {
     const targetedCharacter = event.target.innerText;
     listCharacterDetails(targetedCharacter);
   });
+
+
 }
 
 async function listCharacterDetails(character) {
   const loaderPosition = document.querySelector(".charinfo");
   clearchar();
   displayLoader(loaderPosition);
-
   let char = [];
   const list = await getCharacterData();
-
   hideLoader();
 
   for (const currentCharacter of list) {
@@ -97,14 +97,10 @@ function renderCharacterDetails(character) {
 async function listPlanetDetails(character) {
   clearplanet();
   const loaderPosition = document.querySelector(".planetinfo");
-
   displayLoader(loaderPosition);
-
   const planetInfo = await fetch(character.homeworld);
   const planetData = await planetInfo.json();
-
   hideLoader();
-
   renderPlanetDetails(planetData);
 }
 
@@ -151,30 +147,59 @@ function hideLoader() {
   loader.remove();
 }
 
-changePage();
-
-function changePage() {
+function selectPage() {
   const pageNumber = document.querySelector(".pagenumber");
   const nextPage = document.querySelector(".nextpage");
   const previousPage = document.querySelector(".previouspage");
-  pageNumber.innerHTML = currentPage;
+  const lastPage = "/9" //en riktigt ful en...
+  previousPage.style.display = "none"
+  pageNumber.innerHTML = currentPage + lastPage;
 
   nextPage.addEventListener("click", function (e) {
-    const clear = document.querySelector(".character");
-    clear.innerHTML = "";
 
-    getCharacterData((currentPage += 1));
+    const clear = document.querySelector(".character"); //byta till clear-funktion
+    clear.innerHTML = "";                               //byta till clear-funktion
+
+    currentPage += 1
+    pageNumber.innerHTML = currentPage + lastPage;
+    getCharacterData(currentPage);
     listCharacters();
+
+    if (currentPage > 8) {
+      nextPage.style.display = "none"
+    }
+    if (currentPage > 1) {
+      previousPage.style.display = "block"
+    }
+
   });
 
   previousPage.addEventListener("click", function (e) {
-    const clear = document.querySelector(".character");
-    clear.innerHTML = "";
 
-    getCharacterData((currentPage -= 1));
+    const clear = document.querySelector(".character"); //byta till clear-funktion
+    clear.innerHTML = "";                               //byta till clear-funktion
+
+    currentPage -= 1
+    pageNumber.innerHTML = currentPage + lastPage;
+    getCharacterData(currentPage);
     listCharacters();
+
+    if (currentPage < 9) {
+      nextPage.style.display = "block"
+    }
+
+    if (currentPage == 1) {
+      previousPage.style.display = "none"
+    }
+
   });
+
 }
+
+
+
+
+
 
 // ------------ wip-funktion som rensar listor --------
 
@@ -190,9 +215,9 @@ function clearchar(charsnew) {
   charsnew.innerHTML = "";
 }
 
-function clearplanet(planetsnew){
+function clearplanet(planetsnew) {
   var planetsnew = document.getElementsByClassName("planetinfo")[0];
   planetsnew.innerHTML = "";
 }
-    
- 
+
+
